@@ -1,0 +1,6 @@
+---
+name: silverstripe-elemental-links-config
+---
+Sheadawson\Linkable\Models\Link:
+  extensions:
+    - Dynamic\Elements\Links\Extensions\LinkDataExtension
