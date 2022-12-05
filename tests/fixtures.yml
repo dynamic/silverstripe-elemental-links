@@ -69,7 +69,7 @@ Page:
     Title: 'Demo'
     ElementalArea: =>DNADesign\Elemental\Models\ElementalArea.one
 
-Dynamic\Elements\Accordion\Elements\LinksElement:
+Dynamic\Elements\Links\Elements\LinksElement:
   one:
     Title: "Links"
     Headline: "Links sub-head"
