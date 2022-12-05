@@ -6,9 +6,12 @@ use DNADesign\Elemental\Models\BaseElement;
 use gorriecoe\Link\Models\Link;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HasManyList;
+use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 /**
@@ -23,6 +26,13 @@ class LinksElement extends BaseElement
      * @var string
      */
     private static $table_name = 'LinksElement';
+
+    /**
+     * @var array
+     */
+    private static $db = [
+        'Content' => 'HTMLText',
+    ];
 
     /**
      * @var string
@@ -52,13 +62,24 @@ class LinksElement extends BaseElement
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            $fields->dataFieldByName('Content')
+                ->setRows(8);
+            
             if (($links = $fields->dataFieldByName('ElementLinks')) && $links instanceof GridField) {
                 $links->setTitle($this->fieldLabel('Links'));
 
                 $fields->removeByName('ElementLinks');
 
                 $links->getConfig()
-                    ->addComponents(new GridFieldOrderableRows('ElementLinksSort'));
+                    ->addComponents([
+                        new GridFieldOrderableRows('ElementLinksSort'),
+                        new GridFieldAddExistingSearchButton(),
+                    ])
+                    ->removeComponentsByType([
+                        GridFieldAddExistingAutocompleter::class,
+                        GridFieldDeleteAction::class,
+                    ])
+                ;
 
                 $fields->addFieldToTab('Root.Main', $links);
             }
