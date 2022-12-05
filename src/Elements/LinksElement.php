@@ -64,7 +64,7 @@ class LinksElement extends BaseElement
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
             $fields->dataFieldByName('Content')
                 ->setRows(8);
-            
+
             if (($links = $fields->dataFieldByName('ElementLinks')) && $links instanceof GridField) {
                 $links->setTitle($this->fieldLabel('Links'));
 
@@ -108,7 +108,7 @@ class LinksElement extends BaseElement
     protected function provideBlockSchema()
     {
         $blockSchema = parent::provideBlockSchema();
-        //$blockSchema['content'] = $this->getSummary();
+        $blockSchema['content'] = $this->getSummary();
         return $blockSchema;
     }
 
