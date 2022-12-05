@@ -3,7 +3,7 @@
 namespace Dynamic\Elements\Links\Elements;
 
 use DNADesign\Elemental\Models\BaseElement;
-use Sheadawson\Linkable\Models\Link;
+use gorriecoe\Link\Models\Link;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\ORM\FieldType\DBField;
@@ -53,8 +53,14 @@ class LinksElement extends BaseElement
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
             if (($links = $fields->dataFieldByName('ElementLinks')) && $links instanceof GridField) {
+                $links->setTitle($this->fieldLabel('Links'));
+
+                $fields->removeByName('ElementLinks');
+
                 $links->getConfig()
                     ->addComponents(new GridFieldOrderableRows('ElementLinksSort'));
+
+                $fields->addFieldToTab('Root.Main', $links);
             }
         });
 
@@ -81,7 +87,7 @@ class LinksElement extends BaseElement
     protected function provideBlockSchema()
     {
         $blockSchema = parent::provideBlockSchema();
-        $blockSchema['content'] = $this->getSummary();
+        //$blockSchema['content'] = $this->getSummary();
         return $blockSchema;
     }
 
