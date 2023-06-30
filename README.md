@@ -13,9 +13,9 @@ Links block for SilverStripe Elemental
 
 ## Requirements
 
-* dnadesign/silverstripe-elemental: ^4.4
-* gorriecoe/silverstripe-linkfield: ^1.0
-* symbiote/silverstripe-gridfieldextensions: ^3.2
+* dnadesign/silverstripe-elemental: ^5
+* gorriecoe/silverstripe-linkfield: ^1.1
+* symbiote/silverstripe-gridfieldextensions: ^4
 
 ## Installation
 
@@ -51,11 +51,11 @@ See [Elemental modules by Dynamic](https://github.com/orgs/dynamic/repositories?
 
 ## Configuration
 
-See [SilverStripe Elemental Configuration](https://github.com/dnadesign/silverstripe-elemental#configuration)
+See [SilverStripe Elemental Configuration](https://github.com/silverstripe/silverstripe-elemental#configuration)
 
 ## Maintainers
 
-*  [Dynamic](http://www.dynamicagency.com) (<dev@dynamicagency.com>)
+ *  [Dynamic](https://www.dynamicagency.com) (<dev@dynamicagency.com>)
 
 ## Bugtracker
 Bugs are tracked in the issues section of this repository. Before submitting an issue please read over
@@ -63,11 +63,11 @@ existing issues to ensure yours is unique.
 
 If the issue does look like a new bug:
 
-- Create a new issue
-- Describe the steps required to reproduce your issue, and the expected outcome. Unit tests, screenshots
-  and screencasts can help here.
-- Describe your environment as detailed as possible: SilverStripe version, Browser, PHP version,
-  Operating System, any installed SilverStripe modules.
+ - Create a new issue
+ - Describe the steps required to reproduce your issue, and the expected outcome. Unit tests, screenshots
+ and screencasts can help here.
+ - Describe your environment as detailed as possible: SilverStripe version, Browser, PHP version,
+ Operating System, any installed SilverStripe modules.
 
 Please report security issues to the module maintainers directly. Please don't file security issues in the bugtracker.
 
