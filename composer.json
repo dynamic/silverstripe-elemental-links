@@ -18,12 +18,13 @@
         }
     ],
     "require": {
-        "dnadesign/silverstripe-elemental": "^4.4",
-        "gorriecoe/silverstripe-linkfield": "^1.0",
-        "symbiote/silverstripe-gridfieldextensions": "^3.2"
+        "dnadesign/silverstripe-elemental": "^5",
+        "gorriecoe/silverstripe-linkfield": "^1.1",
+        "silverstripe/framework": "^5",
+        "symbiote/silverstripe-gridfieldextensions": "^4"
     },
     "require-dev": {
-        "silverstripe/recipe-testing": "^2"
+        "silverstripe/recipe-testing": "^3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
