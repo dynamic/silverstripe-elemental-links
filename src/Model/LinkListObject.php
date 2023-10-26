@@ -67,10 +67,10 @@ class LinkListObject extends DataObject
     {
         $labels = parent::fieldLabels($includerelations);
 
-        $labels['Description'] = _t(__CLASS__.'.DescriptionLabel', 'Description');
-        $labels['Link.Title'] = _t(__CLASS__.'.LinkTitleLabel', 'Link');
-        $labels['Link.LinkURL'] = _t(__CLASS__.'.LinkURLLabel', 'Link URL');
-        $labels['Link'] = _t(__CLASS__.'.LinkLabel', 'Link');
+        $labels['Description'] = _t(__CLASS__ . '.DescriptionLabel', 'Description');
+        $labels['Link.Title'] = _t(__CLASS__ . '.LinkTitleLabel', 'Link');
+        $labels['Link.LinkURL'] = _t(__CLASS__ . '.LinkURLLabel', 'Link URL');
+        $labels['Link'] = _t(__CLASS__ . '.LinkLabel', 'Link');
 
         return $labels;
     }
