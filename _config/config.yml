@@ -1,6 +1,3 @@
 ---
 name: silverstripe-elemental-links-config
 ---
-gorriecoe\Link\Models\Link:
-  extensions:
-    - Dynamic\Elements\Links\Extensions\LinkDataExtension

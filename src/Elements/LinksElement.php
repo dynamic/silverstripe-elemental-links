@@ -3,6 +3,7 @@
 namespace Dynamic\Elements\Links\Elements;
 
 use DNADesign\Elemental\Models\BaseElement;
+use Dynamic\Elements\Links\Model\LinkListObject;
 use gorriecoe\Link\Models\Link;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
@@ -11,7 +12,6 @@ use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\ORM\HasManyList;
-use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 /**
@@ -53,7 +53,7 @@ class LinksElement extends BaseElement
      * @var array
      */
     private static $has_many = [
-        'ElementLinks' => Link::class,
+        'ElementLinks' => LinkListObject::class,
     ];
 
     /**
@@ -72,8 +72,8 @@ class LinksElement extends BaseElement
 
                 $links->getConfig()
                     ->addComponents([
-                        new GridFieldOrderableRows('ElementLinksSort'),
-                        new GridFieldAddExistingSearchButton(),
+                        new GridFieldOrderableRows('SortOrder'),
+                        //new GridFieldAddExistingSearchButton(),
                     ])
                     ->removeComponentsByType([
                         GridFieldAddExistingAutocompleter::class,
