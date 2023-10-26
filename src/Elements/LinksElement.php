@@ -11,14 +11,13 @@ use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\ORM\HasManyList;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 /**
  * Class LinksElement
- * @package Dynamic\Elements\Links\Elements
  *
- * @method HasManyList ElementLinks()
+ * @property string $Content
+ * @method DataList|LinkListObject[] ElementLinks()
  */
 class LinksElement extends BaseElement
 {
@@ -73,7 +72,6 @@ class LinksElement extends BaseElement
                 $links->getConfig()
                     ->addComponents([
                         new GridFieldOrderableRows('SortOrder'),
-                        //new GridFieldAddExistingSearchButton(),
                     ])
                     ->removeComponentsByType([
                         GridFieldAddExistingAutocompleter::class,

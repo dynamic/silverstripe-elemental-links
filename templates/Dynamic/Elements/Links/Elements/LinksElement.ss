@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <ul class="list-group">
                 <% loop $ElementLinks %>
-                    <a href="$Link.LinkURL" class="list-group-item list-group-item-action" title="$Link.Title"{$Link.TargetAttr}>
+                    <a{$Link.IDAttr} href="$Link.LinkURL" class="list-group-item list-group-item-action" title="$Link.Title"{$Link.TargetAttr}>
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">
                                 <i class="bi bi-link-45deg"></i>

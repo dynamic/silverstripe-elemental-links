@@ -8,6 +8,16 @@ use SilverStripe\Forms\FieldList;
 use gorriecoe\LinkField\LinkField;
 use Dynamic\Elements\Links\Elements\LinksElement;
 
+/**
+ * Class \Dynamic\Elements\Links\Model\LinkListObject
+ *
+ * @property string $Content
+ * @property int $SortOrder
+ * @property int $LinkListID
+ * @property int $LinkID
+ * @method LinksElement LinkList()
+ * @method Link Link()
+ */
 class LinkListObject extends DataObject
 {
     /**
@@ -57,6 +67,7 @@ class LinkListObject extends DataObject
     {
         $labels = parent::fieldLabels($includerelations);
 
+        $labels['Description'] = _t(__CLASS__.'.DescriptionLabel', 'Description');
         $labels['Link.Title'] = _t(__CLASS__.'.LinkTitleLabel', 'Link');
         $labels['Link.LinkURL'] = _t(__CLASS__.'.LinkURLLabel', 'Link URL');
         $labels['Link'] = _t(__CLASS__.'.LinkLabel', 'Link');
@@ -94,7 +105,7 @@ class LinkListObject extends DataObject
     }
 
     /**
-     * return Title
+     * return Title of Link for LinkListObject Title
      *
      * @return void
      */
