@@ -5,17 +5,16 @@
     <div class="row element__links__list">
         <div class="col-md-12">
             <ul class="list-group">
-                <% loop $ElementLinks %>
+                <% loop $ElementLinks.Sort('SortOrder') %>
                     <a href="$LinkObject.URL" class="list-group-item list-group-item-action" title="$Title"<% if $LinkObject.OpenInNew %> target="_blank" rel="noopener noreferrer"<% end_if %>>
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">
                                 <i class="bi bi-link-45deg"></i>
                                 $Title
                             </h4>
-                            <small>updated $LastEdited.Ago</small>
                         </div>
                         $Content
-                        <% if $LinkObject.URL %><p>$LinkObject.URL</p><% end_if %>
+                        <% if $LinkObject.URL %><small>$LinkObject.URL</small><% end_if %>
                     </a>
                 <% end_loop %>
             </ul>
