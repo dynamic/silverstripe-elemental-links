@@ -4,8 +4,6 @@ namespace Dynamic\Elements\Links\Model;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\LinkField\JsonData;
-use SilverStripe\LinkField\Type\Registry;
 use SilverStripe\LinkField\Form\LinkField;
 use Dynamic\Elements\Links\Elements\LinksElement;
 use SilverStripe\LinkField\Models\Link;
