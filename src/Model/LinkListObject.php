@@ -4,22 +4,22 @@ namespace Dynamic\Elements\Links\Model;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\TextField;
 use SilverStripe\LinkField\JsonData;
-use SilverStripe\LinkField\ORM\DBLink;
 use SilverStripe\LinkField\Type\Registry;
 use SilverStripe\LinkField\Form\LinkField;
 use Dynamic\Elements\Links\Elements\LinksElement;
+use SilverStripe\LinkField\Models\Link;
 
 /**
  * Class \Dynamic\Elements\Links\Model\LinkListObject
  *
  * @property string $Title
  * @property string $Content
- * @property string $ElementLink
  * @property int $SortOrder
  * @property int $LinkListID
+ * @property int $LinkID
  * @method LinksElement LinkList()
+ * @method Link Link()
  */
 class LinkListObject extends DataObject
 {
@@ -42,7 +42,6 @@ class LinkListObject extends DataObject
     private static $db = [
         'Title' => 'Varchar(255)',
         'Content' => 'HTMLText',
-        'ElementLink' => DBLink::class,
         'SortOrder' => "Int",
     ];
 
@@ -52,6 +51,7 @@ class LinkListObject extends DataObject
      */
     private static $has_one = [
         'LinkList' => LinksElement::class,
+        'Link' => Link::class,
     ];
 
     /**
@@ -60,6 +60,7 @@ class LinkListObject extends DataObject
      */
     private static $summary_fields = [
         'Title',
+        'Link.Title',
     ];
 
     /**
@@ -77,10 +78,9 @@ class LinkListObject extends DataObject
         $labels = parent::fieldLabels($includerelations);
 
         $labels['Title'] = _t(__CLASS__ . '.TitleLabel', 'Title');
-        $labels['Description'] = _t(__CLASS__ . '.DescriptionLabel', 'Description');
-        $labels['Link.Title'] = _t(__CLASS__ . '.LinkTitleLabel', 'Link');
-        $labels['Link.LinkURL'] = _t(__CLASS__ . '.LinkURLLabel', 'Link URL');
+        $labels['Content'] = _t(__CLASS__ . '.ContentLabel', 'Description');
         $labels['Link'] = _t(__CLASS__ . '.LinkLabel', 'Link');
+        $labels['Link.Title'] = _t(__CLASS__ . '.LinkTitleLabel', 'Link');
 
         return $labels;
     }
@@ -93,43 +93,21 @@ class LinkListObject extends DataObject
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
 
             $fields->removeByName([
-                'ElementLink',
                 'LinkListID',
                 'SortOrder',
             ]);
             
-            $fields->addFieldToTab('Root.Main', $title = TextField::create('Title'), 'Content');
-            $title->setTitle($this->fieldLabel('Title'));
-
             // @phpstan-ignore-next-line
             $fields->dataFieldByName('Content')
-                ->setTitle($this->fieldLabel('Description'))
                 ->setRows(5);
 
-            $fields->addFieldToTab('Root.Main', $link = LinkField::create('ElementLink'));
-            $link->setTitle($this->fieldLabel('Link'));
+            $fields->replaceField(
+                'LinkID',
+                LinkField::create('Link')
+                    ->setTitle($this->fieldLabel('Link'))
+            );
         });
 
         return parent::getCMSFields();
-    }
-
-    /**
-     * @return JsonData|null
-     */
-    public function getLinkObject(): ?JsonData
-    {
-        $link = $this->dbObject('ElementLink');
-
-        $value = $link->getValue();
-
-        if ($value) {
-            $type = Registry::singleton()->byKey($value['typeKey']);
-
-            if ($type) {
-                return $type->loadLinkData($value);
-            }
-        }
-
-        return null;
     }
 }
