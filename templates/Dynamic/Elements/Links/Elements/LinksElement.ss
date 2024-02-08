@@ -5,17 +5,24 @@
     <div class="row element__links__list">
         <div class="col-md-12">
             <ul class="list-group">
-                <% loop $ElementLinks %>
-                    <a{$Link.IDAttr} href="$Link.LinkURL" class="list-group-item list-group-item-action" title="$Link.Title"{$Link.TargetAttr}>
+                <% loop $ElementLinks.Sort('SortOrder') %>
+                    <a href="$Link.URL" class="list-group-item list-group-item-action" title="$Title"<% if $Link.OpenInNew %> target="_blank" rel="noopener noreferrer"<% end_if %>>
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">
-                                <i class="bi bi-link-45deg"></i>
-                                $Link.Title
-                            </h4>
-                            <small>updated $LastEdited.Ago</small>
+                            <h4 class="mb-1">$Title</h4>
                         </div>
                         $Content
-                    <% if $Link.Type == 'URL' %><small>$Link.LinkURL</small><% end_if %>
+                        <% if $Link %>
+                            <div class="d-flex gap-3">
+                                <% with $Link %>
+                                    <i class="bi bi-link-45deg"></i>
+                                    <div class="d-flex gap-2 w-100">
+                                        <small>
+                                            <% if $Title %>$Title<br><% end_if %>{$URL}
+                                        </small>
+                                    </div>
+                                <% end_with %>
+                            </div>
+                        <% end_if %>
                     </a>
                 <% end_loop %>
             </ul>

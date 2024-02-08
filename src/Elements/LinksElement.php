@@ -10,7 +10,6 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\FieldType\DBHTMLText;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 /**
@@ -23,11 +22,13 @@ class LinksElement extends BaseElement
 {
     /**
      * @var string
+     * @config
      */
     private static $table_name = 'LinksElement';
 
     /**
      * @var array
+     * @config
      */
     private static $db = [
         'Content' => 'HTMLText',
@@ -35,21 +36,25 @@ class LinksElement extends BaseElement
 
     /**
      * @var string
+     * @config
      */
     private static $singular_name = 'Links Element';
 
     /**
      * @var string
+     * @config
      */
     private static $plural_name = 'Links Elements';
 
     /**
      * @var bool
+     * @config
      */
     private static $inline_editable = false;
 
     /**
      * @var array
+     * @config
      */
     private static $has_many = [
         'ElementLinks' => LinkListObject::class,
@@ -61,6 +66,7 @@ class LinksElement extends BaseElement
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            // @phpstan-ignore-next-line
             $fields->dataFieldByName('Content')
                 ->setRows(8);
 
@@ -87,7 +93,7 @@ class LinksElement extends BaseElement
     }
 
     /**
-     * @return DBHTMLText
+     * @return string
      */
     public function getSummary()
     {
