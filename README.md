@@ -14,7 +14,7 @@ Links block for SilverStripe Elemental
 ## Requirements
 
 * dnadesign/silverstripe-elemental: ^5
-* gorriecoe/silverstripe-linkfield: ^1.1
+* silverstripe/linkfield: ^3
 * symbiote/silverstripe-gridfieldextensions: ^4
 
 ## Installation
@@ -25,21 +25,9 @@ Links block for SilverStripe Elemental
 
 See [License](license.md)
 
-## Upgrading from version 1
+## Upgrading from version 2
 
-LinksElement drops `sheadawson/silverstripe-linkable` usage in favor of `gorriecoe/silverstripe-linkfield`. To avoid data loss, install the `dynamic/silverstripe-link-migrator` module as follows:
-
-```markdown
-composer require dynamic/silverstripe-link-migrator
-```
-
-Then, run the task "Linkable to SilverStripe Link Migration" via `/dev/tasks`, or cli via:
-```markdown
-vendor/bin/sake dev/tasks/LinkableMigrationTask
-```
-
-This will populate all of the new Link fields with data from the old class.
-
+LinksElement drops `gorriecoe/silverstripe-linkfield` usage in favor of `silverstripe/linkfield`. At this time, we do not have a task to migrate this data, but plan to create one and will update these docs once it exists.
 
 ## Example usage
 
