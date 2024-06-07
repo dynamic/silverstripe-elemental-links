@@ -4,13 +4,15 @@ namespace Dynamic\Elements\Links\Model;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Versioned\Versioned;
+use SilverStripe\LinkField\Models\Link;
 use SilverStripe\LinkField\Form\LinkField;
 use Dynamic\Elements\Links\Elements\LinksElement;
-use SilverStripe\LinkField\Models\Link;
 
 /**
  * Class \Dynamic\Elements\Links\Model\LinkListObject
  *
+ * @property int $Version
  * @property string $Title
  * @property string $Content
  * @property int $SortOrder
@@ -18,6 +20,7 @@ use SilverStripe\LinkField\Models\Link;
  * @property int $LinkID
  * @method LinksElement LinkList()
  * @method Link Link()
+ * @mixin Versioned
  */
 class LinkListObject extends DataObject
 {
@@ -50,6 +53,22 @@ class LinkListObject extends DataObject
     private static $has_one = [
         'LinkList' => LinksElement::class,
         'Link' => Link::class,
+    ];
+
+    /**
+     * @var array
+     * @config
+     */
+    private static $owns = [
+        'Link',
+    ];
+
+    /**
+     * @var array
+     * @config
+     */
+    private static $extensions = [
+        Versioned::class,
     ];
 
     /**

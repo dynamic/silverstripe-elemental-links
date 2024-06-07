@@ -6,24 +6,24 @@
         <div class="col-md-12">
             <ul class="list-group">
                 <% loop $ElementLinks.Sort('SortOrder') %>
-                    <a href="$Link.URL" class="list-group-item list-group-item-action" title="$Title"<% if $Link.OpenInNew %> target="_blank" rel="noopener noreferrer"<% end_if %>>
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">$Title</h4>
-                        </div>
-                        $Content
-                        <% if $Link %>
+                    <% if $Link.exists %>
+                        <a href="$Link.URL" class="list-group-item list-group-item-action" title="$Title"<% if $Link.OpenInNew %> target="_blank" rel="noopener noreferrer"<% end_if %>>
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">$Title</h4>
+                            </div>
+                            $Content
                             <div class="d-flex gap-3">
                                 <% with $Link %>
                                     <i class="bi bi-link-45deg"></i>
                                     <div class="d-flex gap-2 w-100">
                                         <small>
-                                            <% if $Title %>$Title<br><% end_if %>{$URL}
+                                            <% if $Title %>$Title<% else %>{$URL}<% end_if %>
                                         </small>
                                     </div>
                                 <% end_with %>
                             </div>
-                        <% end_if %>
-                    </a>
+                        </a>
+                    <% end_if %>
                 <% end_loop %>
             </ul>
         </div>
