@@ -14,7 +14,17 @@
                             $Content
                             <div class="d-flex gap-3">
                                 <% with $Link %>
-                                    <i class="bi bi-link-45deg"></i>
+                                    <% if $ClassName.ShortName == "FileLink" %>
+                                        <i class="bi bi-file-arrow-down"></i>
+                                    <% else_if $ClassName.ShortName == "ExternalLink" %>
+                                        <i class="bi bi-box-arrow-up-right"></i>
+                                    <% else_if $ClassName.ShortName == "EmailLink" %>
+                                        <i class="bi bi-envelope"></i>
+                                    <% else_if $ClassName.ShortName == "PhoneLink" %>
+                                        <i class="bi bi-telephone"></i>
+                                    <% else %>
+                                        <i class="bi bi-link-45deg"></i>
+                                    <% end_if %>
                                     <div class="d-flex gap-2 w-100">
                                         <small>
                                             <% if $Title %>$Title<% else %>{$URL}<% end_if %>

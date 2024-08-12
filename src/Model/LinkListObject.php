@@ -81,6 +81,7 @@ class LinkListObject extends DataObject
     private static $summary_fields = [
         'Title',
         'Link.Title',
+        'Link.ClassName.ShortName' => 'Type',
     ];
 
     /**
