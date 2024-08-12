@@ -9,7 +9,7 @@
                     <% if $Link.exists %>
                         <a href="$Link.URL" class="list-group-item list-group-item-action" title="$Title"<% if $Link.OpenInNew %> target="_blank" rel="noopener noreferrer"<% end_if %>>
                             <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">$Title</h4>
+                                <% if $ShowTitle %><h4 class="mb-1">$Title</h4><% end_if %>
                             </div>
                             $Content
                             <div class="d-flex gap-3">

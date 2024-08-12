@@ -8,12 +8,14 @@ use SilverStripe\Versioned\Versioned;
 use SilverStripe\LinkField\Models\Link;
 use SilverStripe\LinkField\Form\LinkField;
 use Dynamic\Elements\Links\Elements\LinksElement;
+use DNADesign\Elemental\Forms\TextCheckboxGroupField;
 
 /**
  * Class \Dynamic\Elements\Links\Model\LinkListObject
  *
  * @property int $Version
  * @property string $Title
+ * @property bool $ShowTitle
  * @property string $Content
  * @property int $SortOrder
  * @property int $LinkListID
@@ -42,6 +44,7 @@ class LinkListObject extends DataObject
      */
     private static $db = [
         'Title' => 'Varchar(255)',
+        'ShowTitle' => 'Boolean',
         'Content' => 'HTMLText',
         'SortOrder' => "Int",
     ];
@@ -113,6 +116,15 @@ class LinkListObject extends DataObject
                 'LinkListID',
                 'SortOrder',
             ]);
+
+            // Add a combined field for "Title" and "Displayed" checkbox in a Bootstrap input group
+            $fields->removeByName('ShowTitle');
+            $fields->replaceField(
+                'Title',
+                TextCheckboxGroupField::create()
+                    ->setName('Title')
+                    ->setTitle($this->fieldLabel('Title'))
+            );
             
             // @phpstan-ignore-next-line
             $fields->dataFieldByName('Content')
