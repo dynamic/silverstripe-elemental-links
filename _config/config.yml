@@ -1,3 +1,7 @@
 ---
 name: silverstripe-elemental-links-config
 ---
+# Publish file when uploaded for a Link
+SilverStripe\LinkField\Models\FileLink:
+  owns:
+    - File
