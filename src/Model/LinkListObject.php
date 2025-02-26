@@ -127,7 +127,6 @@ class LinkListObject extends DataObject
                     ->setTitle($this->fieldLabel('Title'))
             );
             
-            // @phpstan-ignore-next-line
             $fields->dataFieldByName('Content')
                 ->setRows(5);
 
