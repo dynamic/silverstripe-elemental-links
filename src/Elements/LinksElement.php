@@ -4,7 +4,6 @@ namespace Dynamic\Elements\Links\Elements;
 
 use DNADesign\Elemental\Models\BaseElement;
 use Dynamic\Elements\Links\Model\LinkListObject;
-use gorriecoe\Link\Models\Link;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
@@ -61,12 +60,19 @@ class LinksElement extends BaseElement
     ];
 
     /**
+     * @var array
+     * @config
+     */
+    private static $owns = [
+        'ElementLinks',
+    ];
+
+    /**
      * @return FieldList
      */
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
-            // @phpstan-ignore-next-line
             $fields->dataFieldByName('Content')
                 ->setRows(8);
 
@@ -99,7 +105,7 @@ class LinksElement extends BaseElement
     {
         $count = $this->ElementLinks()->count();
         $label = _t(
-            Link::class . '.PLURALS',
+            LinkListObject::class . '.PLURALS',
             'A link|{count} links',
             ['count' => $count]
         );
