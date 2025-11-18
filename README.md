@@ -2,8 +2,8 @@
 
 Links block for SilverStripe Elemental
 
-[![CI](https://github.com/dynamic/silverstripe-elemental-links/actions/workflows/ci.yml/badge.svg)](https://github.com/dynamic/silverstripe-elemental-links/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/dynamic/silverstripe-elemental-links/branch/master/graph/badge.svg)](https://codecov.io/gh/dynamic/silverstripe-elemental-links)
+![CI](https://github.com/dynamic/silverstripe-elemental-links/actions/workflows/ci.yml/badge.svg)
+[![Sponsors](https://img.shields.io/badge/Sponsor-Dynamic-ff69b4?logo=github-sponsors&logoColor=white)](https://github.com/sponsors/dynamic)
 
 [![Latest Stable Version](https://poser.pugx.org/dynamic/silverstripe-elemental-links/v/stable)](https://packagist.org/packages/dynamic/silverstripe-elemental-links)
 [![Total Downloads](https://poser.pugx.org/dynamic/silverstripe-elemental-links/downloads)](https://packagist.org/packages/dynamic/silverstripe-elemental-links)
@@ -13,25 +13,32 @@ Links block for SilverStripe Elemental
 
 ## Requirements
 
-* dnadesign/silverstripe-elemental: ^5
-* silverstripe/linkfield: ^3
-* symbiote/silverstripe-gridfieldextensions: ^4
+* SilverStripe ^6
+* PHP ^8.1
+* dnadesign/silverstripe-elemental: ^6
+* silverstripe/linkfield: ^5
+* symbiote/silverstripe-gridfieldextensions: ^5
 
 ## Installation
 
 `composer require dynamic/silverstripe-elemental-links`
 
+## Features
+
+- Display curated lists of links within elemental pages
+- Each link can have a custom title, description, and optional display toggle
+- Full LinkField integration with support for internal pages, external URLs, files, and email links
+- Drag-to-reorder links directly in the CMS with GridField OrderableRows
+- Optional per-link descriptions with HTML support
+- Fully compatible with SilverStripe 6
+
+## Usage
+
+A block to display a list of links. Add the block to your elemental pages and configure the links through the admin interface.
+
 ## License
 
 See [License](license.md)
-
-## Upgrading from version 2
-
-LinksElement drops `gorriecoe/silverstripe-linkfield` usage in favor of `silverstripe/linkfield`. At this time, we do not have a task to migrate this data, but plan to create one and will update these docs once it exists.
-
-## Example usage
-
-A block to display a list of links.
 
 ## Getting more elements
 
