@@ -37,13 +37,13 @@ class LinksElement extends BaseElement
      * @var string
      * @config
      */
-    private static $singular_name = 'Links Element';
+    private static $singular_name = 'Links';
 
     /**
      * @var string
      * @config
      */
-    private static $plural_name = 'Links Elements';
+    private static $plural_name = 'Links Blocks';
 
     /**
      * @var bool
@@ -120,13 +120,5 @@ class LinksElement extends BaseElement
         $blockSchema = parent::provideBlockSchema();
         $blockSchema['content'] = $this->getSummary();
         return $blockSchema;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return _t(__CLASS__ . '.BlockType', 'Links');
     }
 }
