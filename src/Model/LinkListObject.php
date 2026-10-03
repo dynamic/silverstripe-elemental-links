@@ -70,6 +70,14 @@ class LinkListObject extends DataObject
      * @var array
      * @config
      */
+    private static $cascade_duplicates = [
+        'Link',
+    ];
+
+    /**
+     * @var array
+     * @config
+     */
     private static $extensions = [
         Versioned::class,
     ];
